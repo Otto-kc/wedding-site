@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sito Matrimonio | Mario & Giulia</title>
+  <meta name="description" content="Il sito ufficiale del matrimonio di Mario & Giulia: programma, luoghi, RSVP, alloggi e informazioni utili.">
+  <style>
+    :root{
+      --bg:#fffdf9;
+      --text:#1f2937;
+      --muted:#6b7280;
+      --brand:#8b5cf6; /* viola tenue */
+      --brand2:#f59e0b; /* ambra per accent */
+      --card:#ffffff;
+      --shadow:0 10px 25px rgba(0,0,0,.06);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Helvetica,Arial,Apple Color Emoji,Segoe UI Emoji;
+      color:var(--text);
+      background:linear-gradient(180deg,#fffefb, var(--bg));
+    }
+    .container{width:100%;max-width:1100px;margin:0 auto;padding:0 20px}
+    header{
+      position:sticky;top:0;background:rgba(255,255,255,.7);backdrop-filter: blur(10px);
+      z-index:50;border-bottom:1px solid #eee;
+    }
+    nav{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
+    nav .brand{font-weight:700;letter-spacing:.5px}
+    nav a{color:var(--text);text-decoration:none;margin:0 10px;font-size:15px}
+    nav a.cta{
+      background:var(--brand);color:#fff;padding:10px 14px;border-radius:12px;box-shadow:var(--shadow);
+    }
+    .hero{
+      display:grid;grid-template-columns:1.2fr 1fr;gap:30px;align-items:center;
+      padding:60px 0;
+    }
+    .hero .card{
+      background:var(--card);padding:28px;border-radius:var(--radius);box-shadow:var(--shadow);
+    }
+    h1{font-size:42px;line-height:1.15;margin:0 0 12px}
+    .muted{color:var(--muted)}
+    .pill{
+      display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;
+      background:#f3f4f6;color:#374151;font-size:14px
+    }
+    .btn{
+      display:inline-block;background:var(--brand);color:#fff;padding:12px 16px;border-radius:12px;
+      text-decoration:none;box-shadow:var(--shadow)
+    }
+    section{padding:60px 0}
+    .grid{display:grid;gap:20px}
+    .grid-2{grid-template-columns:1fr 1fr}
+    .card{background:var(--card);padding:22px;border-radius:var(--radius);box-shadow:var(--shadow)}
+    .title{font-size:26px;margin:0 0 8px}
+    .subtitle{color:var(--muted);margin:0 0 16px}
+    .timeline{border-left:3px solid #eee;padding-left:16px}
+    .timeline .item{margin:14px 0}
+    .tag{display:inline-block;background:#eef2ff;color:#3730a3;padding:6px 10px;border-radius:999px;font-size:12px}
+    .map-embed iframe{width:100%;height:300px;border:0;border-radius:12px}
+    .faq details{background:#fafafa;border:1px solid #eee;border-radius:12px;padding:12px}
+    .faq details+details{margin-top:10px}
+    footer{padding:30px 0 60px;color:var(--muted);text-align:center}
+    .countdown{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+    .countdown .box{min-width:70px;text-align:center;background:#fff;border:1px solid #eee;border-radius:12px;padding:10px}
+    .notice{background:#fff7ed;border:1px solid #fed7aa;color:#7c2d12;border-radius:12px;padding:12px}
+    .success{background:#ecfeff;border:1px solid #a5f3fc;color:#134e4a;border-radius:12px;padding:12px}
+    .accent{color:var(--brand)}
+    .accent2{color:var(--brand2)}
+    .center{text-align:center}
+    @media (max-width: 900px){
+      .hero{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <nav>
+      <div class="brand">Mario &amp; Giulia</div>
+      <div class="menu">
+        <a href="#programma">Programma</a>
+        <a href="#luoghi">Luoghi</a>
+        <a href="#alloggi">Alloggi</a>
+        <a href="#regali">Lista nozze</a>
+        <a class="cta" href="#rsvp">RSVP</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero container">
+    <div class="card">
+      <div class="pill">Ci sposiamo il <span id="datePill">12 giugno 2026</span> • <span id="cityPill">Napoli</span></div>
+      <h1><span class="accent">Mario</span> &amp; <span class="accent2">Giulia</span></h1>
+      <p class="muted" id="heroSubtitle">Siamo felicissimi di invitarvi a festeggiare con noi. Qui trovi tutte le informazioni utili.</p>
+      <div class="countdown" id="countdown" aria-live="polite"></div>
+      <p><a class="btn" href="#rsvp">Conferma presenza</a> &nbsp; <a href="#luoghi">Come arrivare</a></p>
+    </div>
+    <div class="card">
+      <img alt="Foto copertina (sostituisci con una tua immagine)" src="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='800' height='500'><rect width='100%' height='100%' fill='%23f3f4f6'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%239ca3af' font-family='Verdana' font-size='22'>Sostituisci con la tua foto (800x500)</text></svg>" style="width:100%;border-radius:14px"/>
+      <p class="muted center" style="margin-top:10px">Suggerimento: sostituisci l'immagine con una vostra foto (drag&amp;drop in GitHub, poi aggiorna il <code>src</code>).</p>
+    </div>
+  </section>
+
+  <section id="programma" class="container">
+    <h2 class="title">Programma del giorno</h2>
+    <p class="subtitle">Orari chiari e senza stress 💫</p>
+    <div class="grid grid-2">
+      <div class="card">
+        <div class="timeline">
+          <div class="item">
+            <div class="tag">Cerimonia</div>
+            <p><strong id="ceremonyTime">16:00</strong> – <span id="ceremonyPlace">Chiesa di Santa Chiara, Napoli</span></p>
+          </div>
+          <div class="item">
+            <div class="tag">Aperitivo</div>
+            <p><strong id="aperitifTime">18:00</strong> – <span id="aperitifPlace">Terrazza sul mare, Villa Miramare</span></p>
+          </div>
+          <div class="item">
+            <div class="tag">Cena &amp; Festa</div>
+            <p><strong id="dinnerTime">20:00</strong> – <span id="dinnerPlace">Villa Miramare</span></p>
+          </div>
+          <div class="item">
+            <div class="tag">After party</div>
+            <p><strong id="partyTime">23:30</strong> – <span id="partyPlace">Giardini di Villa Miramare</span></p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="notice">
+          <strong>Dress code:</strong> cocktail elegante; colori caldi e pastello. Tacchi sconsigliati in giardino.
+        </div>
+        <div class="success" style="margin-top:10px">
+          <strong>Navetta:</strong> partenza ore <span id="shuttleTime">15:15</span> da <span id="shuttlePlace">Piazza Municipio</span>. Prenotazione nel form RSVP.
+        </div>
+        <p class="muted" style="margin-top:10px">Clicca “Aggiungi al calendario” per non dimenticare l’evento.</p>
+        <p><a class="btn" id="icsLink" href="#" download="matrimonio.ics">Aggiungi al calendario</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="luoghi" class="container">
+    <h2 class="title">Luoghi &amp; Mappe</h2>
+    <p class="subtitle">Tutte le indicazioni utili 📍</p>
+    <div class="grid grid-2">
+      <div class="card map-embed">
+        <h3>Cerimonia</h3>
+        <iframe id="ceremonyMap" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        <p class="muted">Parcheggio consigliato: <span id="ceremonyParking">Parcheggio Brin</span>.</p>
+      </div>
+      <div class="card map-embed">
+        <h3>Ricevimento</h3>
+        <iframe id="receptionMap" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        <p class="muted">Ingresso ospiti: <span id="receptionEntrance">Via del Mare 12</span>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="alloggi" class="container">
+    <h2 class="title">Alloggi</h2>
+    <p class="subtitle">Hotel e B&amp;B suggeriti vicino alle location</p>
+    <div class="grid grid-2">
+      <div class="card">
+        <ul id="hotelsList">
+          <li><strong>Hotel Vesuvio</strong> – convenzione “M&amp;G” fino al 15/05</li>
+          <li><strong>B&amp;B Marechiaro</strong> – 10 min dalla villa</li>
+          <li><strong>Hotel Duomo</strong> – navetta inclusa</li>
+        </ul>
+      </div>
+      <div class="card">
+        <p class="muted">Nota: prenotate con anticipo. Per esigenze particolari scriveteci a <a id="contactEmail" href="mailto:rsvp@example.com">rsvp@example.com</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="regali" class="container">
+    <h2 class="title">Lista nozze / Regali</h2>
+    <p class="subtitle">Il vostro affetto è il regalo più grande. Se desiderate contribuire al nostro viaggio:</p>
+    <div class="card">
+      <p><strong>IBAN:</strong> <span id="iban">IT00 A000 0000 0000 0000 0000 000</span><br/>
+      Causale: <em>“Regalo matrimonio Mario &amp; Giulia”</em></p>
+      <p>Oppure la nostra lista nozze su <a id="giftListUrl" href="#" target="_blank" rel="noopener">[inserisci link]</a>.</p>
+    </div>
+  </section>
+
+  <section id="rsvp" class="container">
+    <h2 class="title">RSVP</h2>
+    <p class="subtitle">Conferma la tua presenza e comunicaci eventuali allergie o esigenze alimentari</p>
+    <div class="notice">
+      Compilando il form acconsenti al trattamento dei dati per la sola organizzazione dell’evento. Trovi i dettagli nella <a href="#privacy">Privacy</a>.
+    </div>
+    <div class="card">
+      <!-- Incolla qui sotto l'embed del tuo Google Form -->
+      <iframe id="rsvpForm" src="" width="100%" height="900" frameborder="0" marginheight="0" marginwidth="0">Caricamento…</iframe>
+      <p class="muted">Suggerimento: in Google Forms → Invia → &lt;&gt; Incorpora → copia l’URL e incollalo qui nella variabile <code>config.rsvpFormUrl</code>.</p>
+    </div>
+  </section>
+
+  <section id="faq" class="container faq">
+    <h2 class="title">FAQ</h2>
+    <details>
+      <summary>Bambini</summary>
+      <p>Siete i benvenuti con i vostri bimbi. Indicatelo nell’RSVP per i posti a tavola.</p>
+    </details>
+    <details>
+      <summary>Parcheggio</summary>
+      <p>Ci sono posti riservati presso la venue; seguite le indicazioni dello staff.</p>
+    </details>
+    <details>
+      <summary>Foto &amp; hashtag</summary>
+      <p>Usate pure il nostro hashtag <strong>#MarioGiuliaWedding</strong>. I fotografi ufficiali saranno presenti.</p>
+    </details>
+  </section>
+
+  <section id="privacy" class="container">
+    <h2 class="title">Privacy</h2>
+    <div class="card">
+      <p><strong>Titolari:</strong> Mario Rossi &amp; Giulia Bianchi – contatto: <a id="privacyEmail" href="mailto:rsvp@example.com">rsvp@example.com</a></p>
+      <p><strong>Dati raccolti:</strong> nominativo, contatti, preferenze alimentari/allergie, logistica (navetta). <strong>Finalità:</strong> organizzazione del matrimonio. <strong>Base giuridica:</strong> consenso dell’interessato (checkbox nel form).</p>
+      <p><strong>Conservazione:</strong> fino a 30 giorni dopo l’evento, poi cancellazione. <strong>Condivisione:</strong> i dati non sono ceduti a terzi, salvo fornitori strettamente necessari (es. catering per allergie).</p>
+      <p><strong>Diritti:</strong> potete chiedere accesso/cancellazione scrivendo all’email sopra indicata.</p>
+      <p class="muted">Nota: questo testo è informativo e non sostituisce consulenza legale.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <p>Con amore, Mario &amp; Giulia • <span id="weddingDateFoot">12/06/2026</span></p>
+  </div>
+</footer>
+
+<script>
+  // === CONFIGURA QUI I TUOI DATI ===
+  const config = {
+    coupleNames: "Mario & Giulia",
+    dateISO: "2026-06-12T16:00:00+02:00", // data/ora cerimonia in formato ISO
+    dateTextIT: "12 giugno 2026",
+    city: "Napoli",
+    ceremony: {
+      time: "16:00",
+      place: "Chiesa di Santa Chiara, Napoli",
+      mapsEmbed: "https://www.google.com/maps/embed?pb=!1m18!...SOSTITUISCI...",
+      parkingInfo: "Parcheggio Brin"
+    },
+    reception: {
+      timeAperitif: "18:00",
+      placeAperitif: "Terrazza sul mare, Villa Miramare",
+      timeDinner: "20:00",
+      placeDinner: "Villa Miramare",
+      mapsEmbed: "https://www.google.com/maps/embed?pb=!1m18!...SOSTITUISCI...",
+      entrance: "Via del Mare 12"
+    },
+    shuttle: { time: "15:15", place: "Piazza Municipio" },
+    hotels: [
+      "Hotel Vesuvio — convenzione “M&G” fino al 15/05",
+      "B&B Marechiaro — 10 min dalla villa",
+      "Hotel Duomo — navetta inclusa"
+    ],
+    contactEmail: "rsvp@example.com",
+    iban: "IT00 A000 0000 0000 0000 0000 000",
+    giftListUrl: "#",
+    rsvpFormUrl: "", // Incolla qui l'URL di embed del tuo Google Form
+  };
+
+  // === POPOLA LA PAGINA ===
+  document.title = `Sito Matrimonio | ${config.coupleNames}`;
+  document.querySelector(".brand").textContent = config.coupleNames;
+  document.getElementById("datePill").textContent = config.dateTextIT;
+  document.getElementById("cityPill").textContent = config.city;
+  document.getElementById("ceremonyTime").textContent = config.ceremony.time;
+  document.getElementById("ceremonyPlace").textContent = config.ceremony.place;
+  document.getElementById("aperitifTime").textContent = config.reception.timeAperitif;
+  document.getElementById("aperitifPlace").textContent = config.reception.placeAperitif;
+  document.getElementById("dinnerTime").textContent = config.reception.timeDinner;
+  document.getElementById("dinnerPlace").textContent = config.reception.placeDinner;
+  document.getElementById("partyTime").textContent = "23:30";
+  document.getElementById("partyPlace").textContent = "Giardini della venue";
+  document.getElementById("shuttleTime").textContent = config.shuttle.time;
+  document.getElementById("shuttlePlace").textContent = config.shuttle.place;
+  document.getElementById("ceremonyParking").textContent = config.ceremony.parkingInfo;
+  document.getElementById("receptionEntrance").textContent = config.reception.entrance;
+  document.getElementById("contactEmail").href = `mailto:${config.contactEmail}`;
+  document.getElementById("contactEmail").textContent = config.contactEmail;
+  document.getElementById("privacyEmail").href = `mailto:${config.contactEmail}`;
+  document.getElementById("privacyEmail").textContent = config.contactEmail;
+  document.getElementById("iban").textContent = config.iban;
+  document.getElementById("giftListUrl").href = config.giftListUrl;
+  document.getElementById("weddingDateFoot").textContent = config.dateTextIT;
+  document.getElementById("ceremonyMap").src = config.ceremony.mapsEmbed || "";
+  document.getElementById("receptionMap").src = config.reception.mapsEmbed || "";
+  document.getElementById("rsvpForm").src = config.rsvpFormUrl || "";
+
+  // Hotels
+  const ul = document.getElementById("hotelsList");
+  ul.innerHTML = "";
+  config.hotels.forEach(h => {
+    const li = document.createElement("li"); li.textContent = h; ul.appendChild(li);
+  });
+
+  // Countdown
+  const cd = document.getElementById("countdown");
+  function updateCountdown(){
+    const target = new Date(config.dateISO).getTime();
+    const now = new Date().getTime();
+    const diff = Math.max(0, target - now);
+    const d = Math.floor(diff/ (1000*60*60*24));
+    const h = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+    const m = Math.floor((diff%(1000*60*60))/(1000*60));
+    const s = Math.floor((diff%(1000*60))/1000);
+    cd.innerHTML = ["Giorni:"+d,"Ore:"+h,"Min:"+m,"Sec:"+s]
+      .map(t => `<div class="box"><div>${t.split(":")[0]}</div><div style="font-size:20px;font-weight:700">${t.split(":")[1]}</div></div>`).join("");
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // ICS generator (basic)
+  function buildICS(){
+    const dt = new Date(config.dateISO);
+    const tzOffset = -dt.getTimezoneOffset();
+    const pad = n => String(n).padStart(2,"0");
+    function toICSDate(date){
+      const y = date.getUTCFullYear();
+      const mo = pad(date.getUTCMonth()+1);
+      const da = pad(date.getUTCDate());
+      const h = pad(date.getUTCHours());
+      const mi = pad(date.getUTCMinutes());
+      const s = pad(date.getUTCSeconds());
+      return `${y}${mo}${da}T${h}${mi}${s}Z`;
+    }
+    const start = toICSDate(dt);
+    const end = toICSDate(new Date(dt.getTime()+ 3*60*60*1000)); // 3 ore
+    const ics =
+`BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Wedding//IT
+BEGIN:VEVENT
+UID:${Date.now()}@wedding
+DTSTAMP:${toICSDate(new Date())}
+DTSTART:${start}
+DTEND:${end}
+SUMMARY:Matrimonio ${config.coupleNames}
+LOCATION:${config.ceremony.place.replace(/,/g,"\,")}
+DESCRIPTION:Cerimonia e ricevimento. Info su: ${location.href}
+END:VEVENT
+END:VCALENDAR`;
+    const blob = new Blob([ics],{type:"text/calendar"});
+    return URL.createObjectURL(blob);
+  }
+  document.getElementById("icsLink").href = buildICS();
+</script>
+</body>
+</html>
